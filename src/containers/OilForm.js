@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import { updateOilFormData } from '../actions/oilForm';
@@ -23,62 +24,52 @@ class OilForm extends Component {
 
     render() {
         const { name, description, uses, fragrance_profile, medical_properties } = this.props.oilFormData;
+        
         return (
-            <div>
-                Add a Oil to the Directory
-                <form onSubmit={ this.handleOnSubmit }>
-                    <div>
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={ name }
-                            onChange={ this.handleOnChange }
-                            placeholder="Oil Name"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="description">Description</label>
-                        <input
-                            type="textarea"
-                            name="description"
-                            value={ description }
-                            onChange={ this.handleOnChange }
-                            placeholder="Oil Description"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="uses">Uses</label>
-                        <input
-                            type="textarea"
-                            name="uses"
-                            value={ uses }
-                            onChange={ this.handleOnChange }
-                            placeholder="Oil Uses"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="fragrance_profile">Fragrance Profile</label>
-                        <input
-                            type="textarea"
-                            name="fragrance_profile"
-                            value={ fragrance_profile }
-                            onChange={ this.handleOnChange }
-                            placeholder="Oil Fragrance Profile"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="medical_properties">Medical Properties</label>
-                        <input
-                            type="textarea"
-                            name="medical_properties"
-                            value={ medical_properties }
-                            onChange={ this.handleOnChange }
-                            placeholder="Oil Medical Properties"
-                        />
-                    </div>
-                    <button type="submit">Add Oil</button>
-                </form>
+            <div className="oilForm">
+                <div>
+                    <h1>New Oil Form</h1>
+                </div>
+                <div>
+                    <Form onSubmit={ this.handleOnSubmit }>
+                        <FormGroup row>
+                            <Label for="name" sm={2}>Name:</Label>
+                            <Col sm={10}>
+                                <Input type="text" name="name" value={ name } onChange={ this.handleOnChange } placeholder="Oil Name" />
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label for="description" sm={2}>Description:</Label>
+                            <Col sm={10}>
+                                <Input type="textarea" name="description" value={ description } onChange={ this.handleOnChange } placeholder="Oil Description" />
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label for="uses" sm={2}>Uses:</Label>
+                            <Col sm={10}>
+                                <Input type="textarea" name="uses" value={ uses } onChange={ this.handleOnChange } placeholder="Oil Uses" />
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label for="fragrance_profile" sm={2}>Fragrance:</Label>
+                            <Col sm={10}>
+                                <Input type="textarea" name="fragrance_profile" value={ fragrance_profile } onChange={ this.handleOnChange } placeholder="Oil Fragrance" />
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                            <Label for="medical_properties" sm={2}>Medical Properties:</Label>
+                            <Col sm={10}>
+                                <Input type="textarea" name="medical_properties" value={ medical_properties } onChange={ this.handleOnChange } placeholder="Oil Medical Properties" />
+                            </Col>
+                        </FormGroup>
+
+                        <Button type="submit">Add Oil</Button>
+                    </Form>
+                </div>
             </div>
         )
     }
