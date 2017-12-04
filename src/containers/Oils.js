@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import OilCard from '../components/OilCard';
-import OilForm from './OilForm';
+import OilsList from '../components/OilsList';
 import { fetchOils } from '../actions/oils';
 import './Oils.css';
 
@@ -15,11 +14,9 @@ class Oils extends Component {
   render() {
     return (
       <div>
-        <h1>Oils</h1>
-        { this.props.oils.map(oil => 
-          <OilCard key={ oil.id } oil={ oil } />
-        )}
-        <OilForm />
+        <div>
+          <OilsList oils={ this.props.oils }/>
+        </div>
       </div>
     )
   }
