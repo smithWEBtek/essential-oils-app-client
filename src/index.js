@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import OilForm from './containers/OilForm';
 import OilsIndex from './containers/OilsIndex';
-import OilCard from './components/OilCard';
+import OilShow from './containers/OilShow';
 import Navbar from './components/Navbar';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -23,10 +23,9 @@ ReactDOM.render(
         </div>
         <div>
           <Switch>
-            <Route path="/oils/new" component={ OilForm } />
-            <Route path="/oils/:id" component={ OilCard } />
-            <Route path="/oils" component={ OilsIndex } />
-            <Route path="/" render={ Home } />
+            <Route exact path="/" render={ Home } />
+            <Route exact path="/oils" component={ OilsIndex } />
+            <Route exact path="/oils/new" component={ OilForm } />
           </Switch>
         </div>
       </div>
