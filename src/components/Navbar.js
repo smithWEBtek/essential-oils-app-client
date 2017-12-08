@@ -14,9 +14,6 @@ const Navbar = () => (
         <NavItem>
             <NavLink tag={ Link } to="/oils/new">Add New Oil</NavLink>
         </NavItem>
-        <NavItem>
-            <NavLink disabled href="#">Disabled Link</NavLink>
-        </NavItem>
         </Nav>
     </div>
 )
