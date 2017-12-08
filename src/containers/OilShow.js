@@ -1,32 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import OilCard from '../components/OilsList';
-import { fetchOil } from '../actions/oils';
+const OilShow = ({ oil }) => (
+    <div>
+        <h2>{oil.name}</h2>
+        <p>{oil.description}</p>
+    </div>
+)
 
-class OilsShow extends Component {
-
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.fetchOil(id);
+const mapStateToProps = (state, ownProps) => {
+  const oil = state.oils.find(oil => oil.id === +ownProps.match.params.id)
+  
+  if (oil) {
+    return { oil }
+  } else {
+    return { oil: {} }
   }
+};
 
-  render() {
-    return (
-        <OilCard oil={ this.props.oil }/>
-    );
-  }
-
-}
-
-// const mapStateToProps = ({ oils }, ownProps) => {
-//   return { oil: oils[ownProps.match.params.id] }
-// }
-
-const mapStateToProps = (state) => {
-    return ({
-      oil: state.oil
-    })
-  }
-
-export default connect(mapStateToProps, { fetchOil })(OilsShow);
+export default connect(mapStateToProps)(OilShow);

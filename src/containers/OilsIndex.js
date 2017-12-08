@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import OilsList from '../components/OilsList';
 import { fetchOils } from '../actions/oils';
-import './Oils.css';
+// import './Oils.css';
 
 class Oils extends Component {
 

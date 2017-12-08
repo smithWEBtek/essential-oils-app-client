@@ -23,9 +23,10 @@ ReactDOM.render(
         </div>
         <div>
           <Switch>
-            <Route exact path="/" render={ Home } />
-            <Route exact path="/oils" component={ OilsIndex } />
-            <Route exact path="/oils/new" component={ OilForm } />
+            <Route path="/oils/new" component={ OilForm } />
+            <Route path="/oils/:id" component={ OilShow } />
+            <Route path="/oils" component={ OilsIndex } />
+            <Route path="/" component={ Home } />
           </Switch>
         </div>
       </div>
