@@ -10,13 +10,6 @@ const setOils = oils => {
     }
 }
 
-const setOil = oil => {
-    return {
-        type: 'GET_OIL_SUCCESS',
-        oil
-    }
-}
-
 const addOil = oil => {
     return {
         type: 'CREATE_OIL_SUCCESS',
@@ -30,15 +23,6 @@ export const fetchOils = () => {
         return fetch(`${API_URL}/oils`)
             .then(response => response.json())
             .then(oils => dispatch(setOils(oils)))
-            .catch(error => console.log(error));
-    }
-}
-
-export const fetchOil = id => {
-    return dispatch => {
-        return fetch(`${ API_URL }/oils/${ id }`)
-            .then(response => response.json())
-            .then(oil => dispatch(setOil(oil)))
             .catch(error => console.log(error));
     }
 }
