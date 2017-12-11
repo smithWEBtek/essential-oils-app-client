@@ -13,8 +13,8 @@ class Oils extends Component {
     this.props.fetchOils()
   }
 
-  onClickDelete = (oilID) => {
-    deleteOil(oilID)
+  onClickDelete = oilID => {
+    this.props.deleteOil(oilID)
   }
   
   render() {
@@ -27,7 +27,7 @@ class Oils extends Component {
             color="danger" 
             size="sm"
             style={{ float: "right" }}
-            onClick={() => this.props.onClickDelete(oil.id) }
+            onClick={() => this.onClickDelete(oil.id) }
             >
             Delete
             </Button>
@@ -50,4 +50,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, { fetchOils })(Oils);
+export default connect(mapStateToProps, { fetchOils, deleteOil })(Oils);
