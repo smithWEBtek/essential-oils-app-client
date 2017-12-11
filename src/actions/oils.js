@@ -17,6 +17,13 @@ const addOil = oil => {
     }
 }
 
+const destroyOil = oil => {
+    return {
+        type: 'DELETE_OIL_SUCCESS',
+        oil
+    }
+}
+
 // ** Async Actions **
 export const fetchOils = () => {
     return dispatch => {
@@ -43,6 +50,19 @@ export const createOil = oil => {
                 dispatch(addOil(oil))
                 dispatch(resetOilForm())
             })
+            .catch(error => console.log(error));
+    }
+}
+
+export const deleteOil = oilID => {
+    const request = { 
+        method: 'DELETE'
+    };
+
+    return dispatch => {
+        return fetch(`${API_URL}/oils/${oilID}`, request)
+            .then(response => response.json())
+            .then(oil => dispatch(destroyOil(oil)))
             .catch(error => console.log(error));
     }
 }
