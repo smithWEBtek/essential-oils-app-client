@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchOils } from '../actions/oils';
+import { fetchOil } from '../actions/oils';
 import { OilCard } from '../components/OilCard';
 
 class OilShow extends Component {
 
     componentDidMount() {
-        this.props.fetchOils()
+        this.props.fetchOil(this.props.match.params.id)
     }
 
     render() {
@@ -21,14 +21,10 @@ class OilShow extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const oil = state.oils.find(oil => oil.id === +ownProps.match.params.id)
-  
-  if (oil) {
-    return { oil }
-  } else {
-    return { oil: {} }
-  }
-};
+const mapStateToProps = (state) => {    
+    return ({
+        oil: state.oil
+    })
+}
 
-export default connect(mapStateToProps, { fetchOils })(OilShow);
+export default connect(mapStateToProps, { fetchOil })(OilShow);

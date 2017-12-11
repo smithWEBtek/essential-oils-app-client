@@ -6,6 +6,9 @@ const OilsList = ({ oils }) => {
     const renderOils = oils.map(oil =>
         <ListGroupItem key={ oil.id }>
             <Link key={ oil.id } to={`/oils/${oil.id}`}>{ oil.name }</Link>
+            <button onClick={this.props.onClickDelete(oil.id)}>
+            X
+            </button>
         </ListGroupItem>
     );
 

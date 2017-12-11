@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, CardTitle, CardText,
+import { Card, CardTitle, CardText,
  CardSubtitle, CardBody } from 'reactstrap';
 
 export const OilCard = ({ oil }) => (
@@ -13,7 +13,7 @@ export const OilCard = ({ oil }) => (
             <CardText>{ oil.fragrance_profile }</CardText>
             <CardSubtitle>Medical Properties:</CardSubtitle>
             <CardText>{ oil.medical_properties }</CardText>
-            <Button>Delete</Button>
         </CardBody>
     </Card>
 );
+
