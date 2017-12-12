@@ -50,7 +50,7 @@ export const fetchOil = oilID => {
     }
 }
 
-export const createOil = oil => {
+export const createOil = (oil, routerHistory) => {
     const request = {
         method: 'POST',
         body: JSON.stringify({ oil: oil }),
@@ -64,11 +64,41 @@ export const createOil = oil => {
             .then(response => response.json())
             .then(oil => {
                 dispatch(addOil(oil))
-                dispatch(resetOilForm())
+                dispatch(resetOilForm());
+                routerHistory.replace(`/oils/`)
             })
             .catch(error => console.log(error));
     }
 }
+
+
+
+// export const createQuestion = (question, routerHistory) => {
+//     console.log("trying")
+//     return dispatch => {
+//       return fetch(`${API_URL}/questions`, {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ question: question }),
+//       })
+//         .then(response => {
+//           response.json()
+//       })
+//         .then(question => {
+//           dispatch(addQuestion(question));
+//           routerHistory.replace(`/questions/${question.id}`)
+//       })
+//         .catch(error => console.log(error))
+//     }
+//   }
+
+
+
+
+
+
 
 export const deleteOil = oilID => {
     const request = { 

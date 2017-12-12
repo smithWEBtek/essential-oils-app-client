@@ -18,7 +18,9 @@ class OilForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        this.props.createOil(this.props.oilFormData);
+        const { history, createOil } = this.props
+
+        createOil(this.props.oilFormData, history);
     }
 
     render() {
