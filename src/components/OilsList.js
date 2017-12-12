@@ -2,7 +2,7 @@ import React from 'react';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-const OilsList = ({ oils }) => {
+const OilsList = ({ oils, deleteButton }) => {
     debugger;
     const renderOils = oils.map(oil =>
         <ListGroupItem key={ oil.id }>
@@ -11,7 +11,7 @@ const OilsList = ({ oils }) => {
                 color="danger" 
                 size="sm"
                 style={{ float: "right" }}
-                onClick={() => this.props.onClickDelete(oil.id) }
+                onClick={() => deleteButton(oil.id) }
             >
                 Delete
             </Button>
