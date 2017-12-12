@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchOil } from '../actions/oils';
+import { fetchOil, deleteOil } from '../actions/oils';
 import { OilCard } from '../components/OilCard';
 
 class OilShow extends Component {
@@ -10,12 +10,18 @@ class OilShow extends Component {
         this.props.fetchOil(this.props.match.params.id)
     }
 
+    onClickDelete = oilID => {
+        const { history, deleteOil } = this.props
+
+        deleteOil(oilID, history);
+    }
+
     render() {
         const { oil } = this.props;
 
         return (
             <div>
-                <OilCard oil={ oil } />
+                <OilCard oil={ oil } deleteButton={ this.onClickDelete } />
             </div>
         );
     }
@@ -27,4 +33,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { fetchOil })(OilShow);
+export default connect(mapStateToProps, { fetchOil, deleteOil })(OilShow);

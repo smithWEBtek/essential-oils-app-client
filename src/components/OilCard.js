@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardTitle, CardText,
- CardSubtitle, CardBody } from 'reactstrap';
+ CardSubtitle, CardBody, Button } from 'reactstrap';
 
-export const OilCard = ({ oil }) => (
+export const OilCard = ({ oil, deleteButton }) => (
     <Card key={ oil.id }>
         <CardBody>
             <CardTitle>{ oil.name }</CardTitle>
@@ -13,6 +13,13 @@ export const OilCard = ({ oil }) => (
             <CardText>{ oil.fragrance_profile }</CardText>
             <CardSubtitle>Medical Properties:</CardSubtitle>
             <CardText>{ oil.medical_properties }</CardText>
+            <Button 
+                color="danger" 
+                size="sm"
+                style={{ float: "right" }}
+                onClick={() => deleteButton(oil.id) }>
+            Delete
+            </Button>
         </CardBody>
     </Card>
 );
