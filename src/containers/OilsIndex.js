@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListGroup, ListGroupItem, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
 
-// import OilsList from '../components/OilsList';
+import OilsList from '../components/OilsList';
 import { fetchOils, deleteOil } from '../actions/oils';
-// import './Oils.css';
 
 class Oils extends Component {
 
@@ -18,29 +15,11 @@ class Oils extends Component {
   }
   
   render() {
-    const { oils } = this.props;
-
-    const renderOils = oils.map(oil =>
-      <ListGroupItem key={ oil.id }>
-          <Link key={ oil.id } to={`/oils/${oil.id}`}>{ oil.name }</Link>
-          <Button 
-            color="danger" 
-            size="sm"
-            style={{ float: "right" }}
-            onClick={() => this.onClickDelete(oil.id) }
-            >
-            Delete
-            </Button>
-      </ListGroupItem>
-    );
-
     return (
       <div>
-          <ListGroup>
-              { renderOils }
-          </ListGroup>
+        <OilsList oils={ this.props.oils } deleteButton={ this.onClickDelete }/>
       </div>
-    );
+    )
   }
 }
 
