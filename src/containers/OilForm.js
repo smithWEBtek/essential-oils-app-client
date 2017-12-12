@@ -17,8 +17,7 @@ class OilForm extends Component {
     }
 
     handleOnSubmit = event => {
-        event.preventDefault();
-
+        event.preventDefault()
         this.props.createOil(this.props.oilFormData)
     }
 
@@ -26,7 +25,7 @@ class OilForm extends Component {
         const { name, description, uses, fragrance_profile, medical_properties } = this.props.oilFormData;
         
         return (
-            <div className="oilForm">
+            <div>
                 <div>
                     <h1>New Oil Form</h1>
                 </div>
