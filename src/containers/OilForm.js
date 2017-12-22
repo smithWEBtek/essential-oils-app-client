@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import { updateOilFormData } from '../actions/oilForm';
+import { updateOilFormData, resetOilForm } from '../actions/oilForm';
 import { createOil } from '../actions/oils';
 
 class OilForm extends Component {
+
+    componentWillMount() {
+        this.props.resetOilForm();
+    }
 
     handleOnChange = event => {
         const { name, value } = event.target
@@ -82,4 +86,4 @@ const mapStateToProps = (state) => {
     })
   }
 
-export default connect(mapStateToProps, { updateOilFormData, createOil })(OilForm);
+export default connect(mapStateToProps, { updateOilFormData, createOil, resetOilForm })(OilForm);
