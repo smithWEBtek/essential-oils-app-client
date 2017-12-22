@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardTitle, CardText,
  CardSubtitle, CardBody, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export const OilCard = ({ oil, deleteButton }) => (
     <Card key={ oil.id }>
@@ -19,6 +20,21 @@ export const OilCard = ({ oil, deleteButton }) => (
                 style={{ float: "right" }}
                 onClick={() => deleteButton(oil.id) }>
             Delete
+            </Button>
+            <Button
+                color="warning"
+                size="sm"
+                style={{ 
+                    float: "right"
+                }}
+            >
+                <Link 
+                    to={{
+                        pathname: `/oils/${ oil.id }/edit`,
+                        state: { oil: oil }
+                    }} >
+                    Edit
+                </Link>
             </Button>
         </CardBody>
     </Card>
