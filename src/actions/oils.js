@@ -24,6 +24,13 @@ const addOil = oil => {
     }
 }
 
+const updateOil = oil => {
+    return {
+        type: 'UPDATED_OIL_SUCCESS',
+        oil
+    }
+}
+
 const destroyOil = oil => {
     return {
         type: 'DELETE_OIL_SUCCESS',
@@ -65,8 +72,28 @@ export const createOil = (oil, routerHistory) => {
             .then(oil => {
                 dispatch(addOil(oil))
                 dispatch(resetOilForm());
-                routerHistory.replace(`/oils/`)
+                routerHistory.replace(`/oils`)
             })
+            .catch(error => console.log(error));
+    }
+}
+
+export const editOil = (oil, routerHistory) => {
+    const request = {
+        method: 'PUT',
+        body: JSON.stringify({ oil: oil }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    };
+    
+    return dispatch => {
+        return fetch(`${API_URL}/oils/${oil.id}`, request)
+            .then(response => response.json())
+            .then(oil => {
+                dispatch(updateOil(oil));
+                routerHistory.replace(`/oils/${oil.id}`)
+            })    
             .catch(error => console.log(error));
     }
 }
@@ -81,7 +108,7 @@ export const deleteOil = (oilID, routerHistory) => {
             .then(response => response.json())
             .then(oil => {
                 dispatch(destroyOil(oil));
-                routerHistory.replace(`/oils/`)
+                routerHistory.replace(`/oils`)
             })
             .catch(error => console.log(error));
     }
