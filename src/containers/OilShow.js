@@ -18,6 +18,10 @@ class OilShow extends Component {
 
     render() {
         const { oil } = this.props;
+// debugger; 
+// 'oil' in console returns empty object
+// this.props does show you've reached an oil id
+// but there is no 'oil' object yet(?)
 
         return (
             <div>

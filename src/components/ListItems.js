@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ListItems = items => {
-    debugger
+    // debugger
     let itemsToArray = items.split("; ");
     return (
         <div>
