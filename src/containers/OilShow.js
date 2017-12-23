@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchOil, deleteOil } from '../actions/oils';
 import { OilCard } from '../components/OilCard';
-
+ 
 class OilShow extends Component {
 
     componentDidMount() {

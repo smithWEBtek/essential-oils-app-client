@@ -6,10 +6,8 @@ import { Link } from 'react-router-dom';
 import ListItems from './ListItems';
 
 export const OilCard = ({ oil, deleteButton }) => (
+
  
-
-
-
     <Card key={ oil.id }>
         <CardBody>
             <CardTitle>{ oil.name }</CardTitle>
